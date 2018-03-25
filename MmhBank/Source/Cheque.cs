@@ -8,28 +8,28 @@ namespace MmhBank.Source
 {
    
     
-    public class Cheque
+    public class Cheque:Compte
     {
-        public Cheque(int compteNumber,
-                        double interestRate, 
-                        int numberOfTransactions, 
-                        double interestRateMinimum,
-                        string description)
+
+        
+        protected int NumberOfTransactions { get; set; }
+        protected double InterestRateMinimum { get; set; }
+
+       
+        public Cheque(int accountNumber,double interestRate,
+            int numberOfTransactions,
+            double interestRateMinimum,
+            string description)
+            :base(accountNumber,interestRate, description)
         {
-            this.CompteNumber = compteNumber;
-            this.InterestRate = interestRate;
-            this.NumberOfTransactions = numberOfTransactions;
-            this.InterestRateMinimum = interestRateMinimum = 0.01;
-            this.Description = description;
+           
+           
+            NumberOfTransactions = numberOfTransactions;
+            InterestRateMinimum = interestRateMinimum = 0.01;
+           
         }
 
-        public int CompteNumber { get; set; }
-        public double InterestRate { get; set; }
-
-        public int NumberOfTransactions { get; set; }
-        public double InterestRateMinimum { get; set; }
-
-        public string Description { get; set; }
+       
 
         public double CalculateInteret(double interestRate,double solde)
         {
